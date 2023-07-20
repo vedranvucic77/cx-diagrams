@@ -49,7 +49,7 @@ export default (
                         </Cell>
                      </Flow>
 
-                     <Flow direction="down" gap={1}>
+                     <Flow direction="down" gap={4}>
                         <Cell width={4} height={2}>
                            <Shape fill="lightgray" text="Circle" shape="circle" />
                         </Cell>
@@ -98,8 +98,44 @@ export default (
                            />
                            <StraightLine from="connected" to="tooltip" stroke="black" />
                         </Cell>
+                        <Flow direction="right" gap={1}>
+                           <Cell width={4} height={2}>
+                              <Shape shapeClass="fill-slate-400" id="rhombus5" shape="rhombus" text="Rhombus5" />
+                           </Cell>
+                        </Flow>
                         <Cell width={4} height={2}>
-                           <Shape shapeClass="fill-blue-300 stroke-blue-800" shape="rhombus" text="Rhombus" />
+                           <Shape
+                              shapeClass="fill-blue-300 stroke-blue-800"
+                              id="rhombus1"
+                              shape="rhombus"
+                              text="Rhombus"
+                           />
+                        </Cell>
+                        <Flow direction="right" gap={4}>
+                           <Cell width={4} height={2}>
+                              <Shape
+                                 shapeClass="fill-green-300 stroke-green-800"
+                                 id="rhombus2"
+                                 shape="rhombus"
+                                 text="Rhombus 2"
+                              />
+                           </Cell>
+                           <Cell width={4} height={2}>
+                              <Shape
+                                 shapeClass="fill-green-300 stroke-green-800"
+                                 id="rhombus10"
+                                 shape="rhombus"
+                                 text="Rhombus 10"
+                              />
+                           </Cell>
+                        </Flow>
+                        <Cell width={6} height={2}>
+                           <Shape
+                              shapeClass="fill-red-300 stroke-red-800"
+                              id="rhombus3"
+                              shape="rhombus"
+                              text="Rhombus 3"
+                           />
                         </Cell>
                      </Flow>
 
@@ -141,7 +177,19 @@ export default (
                                  );
                               }}
                            />
-                           <StraightLine from="connected" to="green" stroke="black" />
+                        </Cell>
+                        <Cell width={4} height={2}>
+                           <Shape
+                              shapeClass="fill-red-300 stroke-red-800"
+                              id="rhombus4"
+                              shape="rhombus"
+                              text="Rhombus 4"
+                           />
+                           {/* <StraightLine from="rhombus3" to="rhombus2" stroke="black" /> */}
+                           {/* <StraightLine from="rhombus2" to="rhombus1" stroke="black" /> */}
+                           {/* <StraightLine from="rhombus2" to="rhombus4" stroke="black" /> */}
+                           {/* <StraightLine from="rhombus5" to="rhombus3" stroke="black" /> */}
+                           {/* <StraightLine from="connected" to="green" stroke="black" /> */}
                         </Cell>
                      </Flow>
                   </Flow>
