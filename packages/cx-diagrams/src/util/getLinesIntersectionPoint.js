@@ -1,5 +1,5 @@
 export function getLinesIntersectionPoint(l1x1, l1y1, l1x2, l1y2, l2x1, l2y1, l2x2, l2y2) {
-   if (!isValidPoint(l1x1, l1y1, l1x2, l1y2) || !isValidPoint(l2x1, l2y1, l2x2, l2y2)) {
+   if (!isLineValid(l1x1, l1y1, l1x2, l1y2) || !isLineValid(l2x1, l2y1, l2x2, l2y2)) {
       return false;
    }
 
@@ -22,7 +22,7 @@ export function getLinesIntersectionPoint(l1x1, l1y1, l1x2, l1y2, l2x1, l2y1, l2
    return { x, y };
 }
 
-function isValidPoint(x1, y1, x2, y2) {
+function isLineValid(x1, y1, x2, y2) {
    return x1 !== x2 && y1 !== y2;
 }
 

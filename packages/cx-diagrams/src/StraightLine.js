@@ -35,9 +35,9 @@ export class StraightLine extends Container {
          l = x;
          t = y;
       } else if (startShape == "rhombus") {
-         let newPoint = rhombusIntersection(l, t, r, b, sb.width() / 2, sb.height() / 2);
-         l = newPoint.x;
-         t = newPoint.y;
+         let { x, y } = rhombusIntersection(l, t, r, b, sb.width() / 2, sb.height() / 2);
+         l = x;
+         t = y;
       }
       if (endShape == "circle") {
          let radius = Math.min(eb.width() / 2, eb.height() / 2);
@@ -49,21 +49,9 @@ export class StraightLine extends Container {
          b = y;
          r = x;
       } else if (endShape == "rhombus") {
-         let newPoint = rhombusIntersection(r, b, l, t, eb.width() / 2, eb.height() / 2);
-         // let point = checkAreLinesParallel(b, r, t, l, eb.width() / 2, eb.height() / 2);
-
-         // if (!point) {
-         //    const { x1, y1, x2, y2 } = getRhombusPoints(sb, eb);
-         //    const intersectionPoint = getLinesIntersectionPoint(l, t, r, b, x1, y1, x2, y2);
-
-         //    point = {
-         //       x: intersectionPoint.x,
-         //       y: intersectionPoint.y,
-         //    };
-         // }
-
-         b = newPoint.y;
-         r = newPoint.x;
+         let { x, y } = rhombusIntersection(r, b, l, t, eb.width() / 2, eb.height() / 2);
+         b = y;
+         r = x;
       }
       return new Rect({ t, r, b, l });
    }
@@ -123,73 +111,19 @@ function rhombusIntersection(x1, y1, x2, y2, halfw, halfh) {
       };
    }
 
-   let yt1 = y1 > y2 ? y1 - halfh : y1 + halfh;
-   let xt1 = x1;
+   const v1y = y1 > y2 ? y1 - halfh : y1 + halfh;
+   const v1x = x1;
 
-   let yt2 = y1;
-   let xt2 = x1 > x2 ? x1 + halfw : x1 - halfh;
+   const v2y = y1;
+   const v2x = x1 > x2 ? x1 - halfw : x1 + halfw;
 
-   let { x, y } = getLinesIntersectionPoint(xt1, yt1, xt2, yt2, x2, y2, x1, y1);
-   // if (x1 < x2) {
-   //    x1 = eb.l;
-   //    y1 = (eb.t + eb.b) / 2;
-   //    x2 = (eb.l + eb.r) / 2;
-   //    y2 = sy < ey ? eb.t : eb.b;
-   // } else {
-   //    x1 = eb.r;
-   //    y1 = (eb.t + eb.b) / 2;
-   //    x2 = (eb.l + eb.r) / 2;
-   //    y2 = sy < ey ? eb.t : eb.b;
-   // }
+   const { x, y } = getLinesIntersectionPoint(v1x, v1y, v2x, v2y, x1, y1, x2, y2);
+
+   if (x === undefined || y === undefined) {
+      throw new Error("Could not find intersection point.");
+   }
+
    return { x, y };
-}
-
-function getRhombusPoints(sb, eb) {
-   let sy = (sb.t + sb.b) / 2;
-   let sx = (sb.l + sb.r) / 2;
-
-   let ey = (eb.t + eb.b) / 2;
-   let ex = (eb.l + eb.r) / 2;
-
-   let x1;
-   let y1;
-   let x2;
-   let y2;
-
-   if (sx < ex) {
-      x1 = eb.l;
-      y1 = (eb.t + eb.b) / 2;
-      x2 = (eb.l + eb.r) / 2;
-      y2 = sy < ey ? eb.t : eb.b;
-   } else {
-      x1 = eb.r;
-      y1 = (eb.t + eb.b) / 2;
-      x2 = (eb.l + eb.r) / 2;
-      y2 = sy < ey ? eb.t : eb.b;
-   }
-
-   return {
-      x1,
-      y1,
-      x2,
-      y2,
-   };
-}
-
-function checkAreLinesParallel(t, l, b, r, halfw, halfh) {
-   if (l == r) {
-      return {
-         x: l,
-         y: b > t ? t + halfh : t - halfh,
-      };
-   }
-
-   if (t == b) {
-      return {
-         y: t,
-         x: r > l ? l + halfw : l - halfw,
-      };
-   }
 }
 
 function rectIntersection(t, l, b, r, halfw, halfh) {
