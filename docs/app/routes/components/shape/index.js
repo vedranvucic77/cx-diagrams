@@ -1,20 +1,19 @@
-import { Ellipse, Line, Rectangle, Svg, Text } from 'cx/svg';
-import { Diagram } from '../../../../../packages/cx-diagrams/src/Diagram';
+import { Svg } from 'cx/svg';
 import { Cell } from '../../../../../packages/cx-diagrams/src/Cell';
+import { Diagram } from '../../../../../packages/cx-diagrams/src/Diagram';
 import { Flow } from '../../../../../packages/cx-diagrams/src/Flow';
-import { Rotate } from '../../../../../packages/cx-diagrams/src/Rotate';
 import { Shape } from '../../../../../packages/cx-diagrams/src/Shape';
 import Controller from './Controller';
 
-import { StraightLine } from '../../../../../packages/cx-diagrams/src/StraightLine';
-import { Md } from '../../../components/Md';
-import { Split } from '../../../components/Split';
-import { Pad } from '../../../components/Pad';
-import { ConfigTable } from '../../../components/ConfigTable';
-import config from '../../../config/Shape';
-import { ImportPath } from '../../../components/ImportPath';
-import { CodeSnippet } from '../../../components/CodeSnippet';
 import { Link, Menu, openContextMenu } from 'cx/widgets';
+import { StraightLine } from '../../../../../packages/cx-diagrams/src/StraightLine';
+import { CodeSnippet } from '../../../components/CodeSnippet';
+import { ConfigTable } from '../../../components/ConfigTable';
+import { ImportPath } from '../../../components/ImportPath';
+import { Md } from '../../../components/Md';
+import { Pad } from '../../../components/Pad';
+import { Split } from '../../../components/Split';
+import config from '../../../config/Shape';
 
 export default (
    <cx>
@@ -49,7 +48,7 @@ export default (
                         </Cell>
                      </Flow>
 
-                     <Flow direction="down" gap={4}>
+                     <Flow direction="down" gap={1}>
                         <Cell width={4} height={2}>
                            <Shape fill="lightgray" text="Circle" shape="circle" />
                         </Cell>
@@ -98,44 +97,8 @@ export default (
                            />
                            <StraightLine from="connected" to="tooltip" stroke="black" />
                         </Cell>
-                        <Flow direction="right" gap={1}>
-                           <Cell width={4} height={2}>
-                              <Shape shapeClass="fill-slate-400" id="rhombus5" shape="rhombus" text="Rhombus5" />
-                           </Cell>
-                        </Flow>
                         <Cell width={4} height={2}>
-                           <Shape
-                              shapeClass="fill-blue-300 stroke-blue-800"
-                              id="rhombus1"
-                              shape="rhombus"
-                              text="Rhombus"
-                           />
-                        </Cell>
-                        <Flow direction="right" gap={4}>
-                           <Cell width={4} height={2}>
-                              <Shape
-                                 shapeClass="fill-green-300 stroke-green-800"
-                                 id="rhombus2"
-                                 shape="rhombus"
-                                 text="Rhombus 2"
-                              />
-                           </Cell>
-                           <Cell width={4} height={2}>
-                              <Shape
-                                 shapeClass="fill-green-300 stroke-green-800"
-                                 id="rhombus10"
-                                 shape="rhombus"
-                                 text="Rhombus 10"
-                              />
-                           </Cell>
-                        </Flow>
-                        <Cell width={6} height={2}>
-                           <Shape
-                              shapeClass="fill-red-300 stroke-red-800"
-                              id="rhombus3"
-                              shape="rhombus"
-                              text="Rhombus 3"
-                           />
+                           <Shape shapeClass="fill-blue-300 stroke-blue-800" shape="rhombus" text="Rhombus" />
                         </Cell>
                      </Flow>
 
@@ -177,19 +140,7 @@ export default (
                                  );
                               }}
                            />
-                        </Cell>
-                        <Cell width={4} height={2}>
-                           <Shape
-                              shapeClass="fill-red-300 stroke-red-800"
-                              id="rhombus4"
-                              shape="rhombus"
-                              text="Rhombus 4"
-                           />
-                           {/* <StraightLine from="rhombus3" to="rhombus2" stroke="black" /> */}
-                           {/* <StraightLine from="rhombus2" to="rhombus1" stroke="black" /> */}
-                           {/* <StraightLine from="rhombus2" to="rhombus4" stroke="black" /> */}
-                           {/* <StraightLine from="rhombus5" to="rhombus3" stroke="black" /> */}
-                           {/* <StraightLine from="connected" to="green" stroke="black" /> */}
+                           <StraightLine from="connected" to="green" stroke="black" />
                         </Cell>
                      </Flow>
                   </Flow>
